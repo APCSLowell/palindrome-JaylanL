@@ -43,7 +43,7 @@ public void tester()
     }
   }
 }
-public static boolean palindrome(String word)
+public  boolean palindrome(String word)
 {
   String backwards=reverse(word);
   if(backwards.equals(word)){
