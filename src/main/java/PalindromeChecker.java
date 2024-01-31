@@ -22,6 +22,14 @@ public void tester()
         System.out.println("An error occurred.");
         e.printStackTrace();
     }
+  String []newLines=new String[lines.length];
+  String ben="";
+  for(int i=0;i<lines.length;i++){ 
+    ben=noCapitals(lines[i]);
+    ben=noSpaces(ben);
+    ben=onlyLetters(ben);
+    newLines[i]=ben;
+  }
   System.out.println("there are " + lines.length + " lines");
   for (int i=0; i < lines.length; i++) 
   {
@@ -37,13 +45,45 @@ public void tester()
 }
 public boolean palindrome(String word)
 {
-  //your code here
+  String backwards=reverse(word);
+  if(backwards.equals(word)){
+    return true;
+  }else
   return false;
 }
-public String reverse(String str)
+public String reverse(String word)
 {
-    String sNew = new String();
-    //your code here
-    return sNew;
+    String s ="";
+  if(word.length()>1){
+  for(int i=word.length();i>0;i--){
+    s=s+word.substring(i-1,i);
+  }
+  return s;
+  }
+  return word;
+}
+public String noCapitals(String sWord){
+return sWord.toLowerCase();
+}
+public String noSpaces(String sWord){
+  String s="";
+  for(int i=0;i<sWord.length();i++){
+    if(sWord.substring(i,i+1).equals(" ")){
+      s=s+"";
+    }else{
+      s=s+sWord.substring(i,i+1);
+    }
+  }
+  return s;
+}
+public String onlyLetters(String sString){
+  String s="";
+  for(int i=0;i<sString.length();i++){
+    if(Character.isLetter(sString.charAt(i))==true){
+      s=s+sString.substring(i,i+1);
+    }
+    s=s+"";
+  }
+  return s;
 }
 }
