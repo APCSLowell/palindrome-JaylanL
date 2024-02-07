@@ -5,7 +5,7 @@ import java.util.Scanner; // Import the Scanner class to read text files
 public class PalindromeChecker {
 public void tester()
 {
-  // String lines[] = loadStrings("palindromes.txt");
+  //String lines[] = loadStrings("palindromes.txt");
   String[] lines = new String[6]; 
     try{
         File myFile = new File("palindromes.txt");
@@ -22,14 +22,6 @@ public void tester()
         System.out.println("An error occurred.");
         e.printStackTrace();
     }
-  String []newLines=new String[lines.length];
-  String ben="";
-  for(int i=0;i<lines.length;i++){ 
-    ben=noCapitals(lines[i]);
-    ben=noSpaces(ben);
-    ben=onlyLetters(ben);
-    newLines[i]=ben;
-  }
   System.out.println("there are " + lines.length + " lines");
   for (int i=0; i < lines.length; i++) 
   {
@@ -43,38 +35,24 @@ public void tester()
     }
   }
 }
-public  boolean palindrome(String word)
+public boolean palindrome(String sWord)
 {
-  String backwards=reverse(word);
-  if(backwards.equals(word)){
+  String backwards=onlyLetters(sWord);
+  if(backwards.equals(reverse(backwards))){
     return true;
   }else
   return false;
 }
-public String reverse(String word)
+public String reverse(String sWord)
 {
     String s ="";
-  if(word.length()>1){
-  for(int i=word.length();i>0;i--){
-    s=s+word.substring(i-1,i);
+  if(sWord.length()>1){
+  for(int i=sWord.length();i>0;i--){
+    s=s+sWord.substring(i-1,i);
   }
   return s;
   }
-  return word;
-}
-public String noCapitals(String sWord){
-return sWord.toLowerCase();
-}
-public String noSpaces(String sWord){
-  String s="";
-  for(int i=0;i<sWord.length();i++){
-    if(sWord.substring(i,i+1).equals(" ")){
-      s=s+"";
-    }else{
-      s=s+sWord.substring(i,i+1);
-    }
-  }
-  return s;
+  return sWord;
 }
 public String onlyLetters(String sString){
   String s="";
@@ -84,6 +62,6 @@ public String onlyLetters(String sString){
     }
     s=s+"";
   }
-  return s;
+  return s.toLowerCase();
 }
 }
